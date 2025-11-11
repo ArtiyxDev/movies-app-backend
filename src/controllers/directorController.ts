@@ -25,6 +25,7 @@ export const getAllDirectors = async (
       id: director.id,
       firstName: director.first_name,
       lastName: director.last_name,
+      image: director.image,
     }));
     res.json(filteredDirectors);
   } catch (error) {

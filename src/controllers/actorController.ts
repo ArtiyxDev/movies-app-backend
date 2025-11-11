@@ -26,6 +26,7 @@ export const getAllActors = async (
         id: actor.id,
         firstName: actor.first_name,
         lastName: actor.last_name,
+        image: actor.image,
       }))
     );
   } catch (error) {
