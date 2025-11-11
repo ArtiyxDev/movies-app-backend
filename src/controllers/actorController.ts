@@ -21,7 +21,13 @@ export const getAllActors = async (
         ["first_name", "ASC"],
       ],
     });
-    res.json(actors);
+    res.json(
+      actors.map((actor) => ({
+        id: actor.id,
+        firstName: actor.first_name,
+        lastName: actor.last_name,
+      }))
+    );
   } catch (error) {
     console.error("Error fetching actors:", error);
     res.status(500).json({ message: "Error fetching actors" });
