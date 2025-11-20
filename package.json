@@ -5,9 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc",
+    "build": "echo 'Vercel builds TypeScript automatically'",
     "start": "node dist/index.js",
-    "vercel-build": "tsc",
     "db:sync": "ts-node src/scripts/syncDatabase.ts",
     "db:seed": "ts-node src/scripts/seedDatabase.ts",
     "deploy:prepare": "git add . && git commit -m 'feat: prepare for deployment' && git push"
@@ -37,6 +36,7 @@
     "@types/express": "^4.17.21",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.10.0",
+    "@vercel/node": "^5.5.8",
     "jest": "^30.2.0",
     "supertest": "^7.1.4",
     "ts-node": "^10.9.1",
