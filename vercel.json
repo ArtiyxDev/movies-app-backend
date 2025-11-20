@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm run vercel-build",
+  "startCommand": "node dist/index.js",
   "builds": [
     {
       "src": "dist/index.js",
