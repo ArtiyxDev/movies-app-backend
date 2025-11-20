@@ -6,7 +6,7 @@ let isInitialized = false;
 
 const initDb = async () => {
   if (isInitialized) return;
-  
+
   try {
     await sequelize.authenticate();
     console.log("✅ DB connected");
@@ -26,9 +26,10 @@ app.use(async (req, res, next) => {
     await initDb();
     next();
   } catch (error) {
-    res.status(500).json({ 
+    res.status(500).json({
       error: "Database connection failed",
-      details: process.env.NODE_ENV === "development" ? String(error) : undefined
+      details:
+        process.env.NODE_ENV === "development" ? String(error) : undefined,
     });
   }
 });
