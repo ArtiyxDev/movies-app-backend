@@ -9,7 +9,8 @@
     "start": "node dist/index.js",
     "vercel-build": "tsc",
     "db:sync": "ts-node src/scripts/syncDatabase.ts",
-    "db:seed": "ts-node src/scripts/seedDatabase.ts"
+    "db:seed": "ts-node src/scripts/seedDatabase.ts",
+    "deploy:prepare": "git add . && git commit -m 'feat: prepare for deployment' && git push"
   },
   "keywords": [
     "express",

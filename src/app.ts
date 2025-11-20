@@ -1,4 +1,5 @@
 import express, { Application, Request, Response, NextFunction } from "express";
+import cors from "cors";
 import morgan from "morgan";
 import routes from "./routes";
 
@@ -9,7 +10,7 @@ const createApp = (): Application => {
   const app = express();
 
   // Middleware
-  // app.use(cors({ origin: "*" })); // Enable CORS for all routes
+  app.use(cors({ origin: "*" })); // Enable CORS for all routes
   app.use(express.json()); // Parse JSON request bodies
   app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
   app.use(morgan("dev")); // HTTP request logger
