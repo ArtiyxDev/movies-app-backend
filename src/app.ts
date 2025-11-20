@@ -1,5 +1,4 @@
 import express, { Application, Request, Response, NextFunction } from "express";
-import cors from "cors";
 import morgan from "morgan";
 import routes from "./routes";
 
