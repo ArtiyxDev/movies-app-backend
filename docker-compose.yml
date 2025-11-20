@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   postgres:
-    image: postgres:15-alpine
+    image: postgres:18
     container_name: movies_db_postgres
     environment:
       POSTGRES_DB: movies_db
@@ -13,7 +13,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   postgres_test:
-    image: postgres:15-alpine
+    image: postgres:18
     container_name: movies_db_postgres_test
     environment:
       POSTGRES_DB: movies_db_test
