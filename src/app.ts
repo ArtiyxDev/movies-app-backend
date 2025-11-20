@@ -10,7 +10,7 @@ const createApp = (): Application => {
   const app = express();
 
   // Middleware
-  app.use(cors({ origin: "*" })); // Enable CORS for all routes
+  // app.use(cors({ origin: "*" })); // Enable CORS for all routes
   app.use(express.json()); // Parse JSON request bodies
   app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
   app.use(morgan("dev")); // HTTP request logger
