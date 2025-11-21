@@ -5,13 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: movies_api
     restart: unless-stopped
     ports:
-      - "${PORT:-3000}:3000"
+      - "3000"
     environment:
       NODE_ENV: production
-      PORT: ${PORT:-3000}
+      PORT: 3000
       DATABASE_URL: ${DATABASE_URL}
       DB_HOST: ${DB_HOST:-postgres}
       DB_PORT: ${DB_PORT:-5432}
