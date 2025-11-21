@@ -63,10 +63,12 @@ DATABASE_URL=postgresql://user:password@host:5432/movies_db
 ### 5. Configurar la Base de Datos
 
 #### Si usas Docker Compose:
+
 - PostgreSQL se creará automáticamente como servicio
 - Usa `DB_HOST=postgres` (nombre del servicio)
 
 #### Si usas Dockerfile solo:
+
 1. En Dokploy, ve a **"Databases"**
 2. Crea un nuevo servicio PostgreSQL
 3. Copia la URL de conexión
@@ -92,11 +94,13 @@ DATABASE_URL=postgresql://user:password@host:5432/movies_db
 Una vez desplegado, necesitas sincronizar las tablas:
 
 **Opción 1: Ejecutar comando en el contenedor**
+
 ```bash
 docker exec -it movies_api pnpm db:sync
 ```
 
 **Opción 2: Desde Dokploy Console**
+
 1. Ve al servicio desplegado
 2. Abre la **Terminal/Console**
 3. Ejecuta: `pnpm db:sync`
@@ -127,6 +131,7 @@ Dokploy puede redesplegar automáticamente cuando hagas push:
 ### Escalado
 
 Si necesitas más recursos:
+
 1. Ve a **Settings** → **Resources**
 2. Ajusta CPU y memoria asignada
 3. Guarda y redespliega
