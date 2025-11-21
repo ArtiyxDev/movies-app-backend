@@ -19,7 +19,12 @@ const startServer = async () => {
 
     // Sync database models
     // In production, use migrations instead of sync
-    await sequelize.sync({ alter: process.env.NODE_ENV === "development" });
+    if (process.env.NODE_ENV === "development") {
+      await sequelize.sync({ alter: true });
+    } else {
+      // In production, just sync without altering
+      await sequelize.sync();
+    }
     console.log("✅ Database models synchronized");
 
     // Create and start Express app
