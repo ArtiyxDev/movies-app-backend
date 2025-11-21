@@ -9,14 +9,18 @@ RUN npm install -g pnpm@10.20.0
 # Copy package files
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
-# Install dependencies
+# Install all dependencies (including devDependencies for build)
 RUN pnpm install --frozen-lockfile
 
 # Copy source code
-COPY . .
+COPY tsconfig.json ./
+COPY src ./src
 
 # Build TypeScript
 RUN pnpm build
+
+# Verify build output
+RUN ls -la dist/
 
 # Production stage
 FROM node:20-alpine
