@@ -16,11 +16,17 @@ const createApp = (): Application => {
   app.use(morgan("dev")); // HTTP request logger
 
   // Health check endpoint
+  app.get("/health", (req: Request, res: Response) => {
+    res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+
+  // Root endpoint
   app.get("/", (req: Request, res: Response) => {
     res.json({
       message: "Movies API",
       version: "1.0.0",
       endpoints: {
+        health: "/health",
         genres: "/genres",
         actors: "/actors",
         directors: "/directors",
