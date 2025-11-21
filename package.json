@@ -10,7 +10,8 @@
     "vercel-build": "tsc",
     "test": "jest",
     "db:sync": "ts-node src/scripts/syncDatabase.ts",
-    "db:seed": "ts-node src/scripts/seedDatabase.ts"
+    "db:seed": "ts-node src/scripts/seedDatabase.ts",
+    "deploy:prepare": "git add . && git commit -m 'feat: prepare for deployment' && git push"
   },
   "keywords": [
     "express",
@@ -23,13 +24,15 @@
   "license": "ISC",
   "packageManager": "pnpm@10.20.0",
   "dependencies": {
+    "@types/node": "^24.10.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.35.0"
+    "sequelize": "^6.35.0",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@swc/jest": "^0.2.39",
@@ -37,12 +40,11 @@
     "@types/express": "^4.17.21",
     "@types/jest": "^30.0.0",
     "@types/morgan": "^1.9.9",
-    "@types/node": "^20.10.0",
     "@types/supertest": "^6.0.3",
+    "@vercel/node": "^5.5.8",
     "jest": "^30.2.0",
     "supertest": "^7.1.4",
     "ts-node": "^10.9.1",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.3.2"
+    "ts-node-dev": "^2.0.0"
   }
 }

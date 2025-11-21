@@ -261,57 +261,99 @@ These endpoints will:
 - movie_actors (movie_id, actor_id)
 - movie_directors (movie_id, director_id)
 
-## 🚢 Deployment to Render.com
+## 🚢 Deployment to Vercel
 
-### 1. Create a PostgreSQL Database
+> **✅ This project is configured and ready to deploy on Vercel**
+
+### Quick Deploy (5 minutes)
+
+1. **Push your code to GitHub:**
+
+   ```bash
+   git add .
+   git commit -m "feat: ready for vercel"
+   git push origin main
+   ```
+
+2. **Go to Vercel:**
+
+   - https://vercel.com → Login with GitHub
+   - Click "Add New..." → "Project"
+   - Import your `movies-app-backend` repository
+   - Framework Preset: **Other**
+
+3. **Setup PostgreSQL Database:**
+
+   Recommended options (all free):
+
+   - **Vercel Postgres**: Integrated, easy to setup
+   - **Neon**: https://neon.tech (Free, 10GB)
+   - **Supabase**: https://supabase.com (Free, includes Auth)
+
+4. **Add Environment Variables:**
+
+   ```env
+   DATABASE_URL=postgresql://user:pass@host:5432/db?sslmode=require
+   NODE_ENV=production
+   ```
+
+5. **Deploy:**
+   - Click "Deploy"
+   - Wait 2-3 minutes
+   - Your API is live! 🎉
+
+### Using Deploy Script
+
+For Windows (PowerShell):
+
+```powershell
+.\deploy.ps1
+```
+
+For Linux/Mac:
+
+```bash
+chmod +x deploy.sh
+./deploy.sh
+```
+
+### Complete Documentation
+
+For detailed instructions, check:
+
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Complete step-by-step guide
+- **[VERCEL_READY.md](./VERCEL_READY.md)** - Summary of changes made
+
+### Alternative Deployment: Render.com
+
+If you prefer Render.com over Vercel:
 
 1. Go to [Render.com](https://render.com)
-2. Click "New +" → "PostgreSQL"
-3. Configure your database:
-   - Name: `movies-db`
-   - Region: Choose closest to your users
-   - Plan: Free tier is fine for testing
-4. Click "Create Database"
-5. Copy the **Internal Database URL**
+2. Create PostgreSQL Database
+3. Create Web Service connected to your repo
+4. Build Command: `pnpm install && pnpm build`
+5. Start Command: `pnpm start`
+6. Add `DATABASE_URL` variable
 
-### 2. Create Web Service
-
-1. Click "New +" → "Web Service"
-2. Connect your GitHub repository
-3. Configure:
-
-   - **Name:** `movies-api`
-   - **Region:** Same as database
-   - **Branch:** `main`
-   - **Root Directory:** `movies-app-backend` (if in monorepo)
-   - **Environment:** `Node`
-   - **Build Command:** `pnpm install && pnpm build`
-   - **Start Command:** `pnpm start`
-   - **Plan:** Free
-
-4. Add Environment Variables:
-
-   - `NODE_ENV`: `production`
-   - `DATABASE_URL`: Paste the Internal Database URL from step 1
-
-5. Click "Create Web Service"
-
-### 3. Auto-Deploy on Git Push
-
-Render automatically deploys when you push to your connected branch.
-
-### 4. Test Your API
+### Verify Deployment
 
 Once deployed, your API will be available at:
 
 ```
-https://your-service-name.onrender.com
+https://your-project.vercel.app
 ```
 
-Test the health endpoint:
+Test the endpoints:
 
 ```bash
-curl https://your-service-name.onrender.com
+# Health check
+curl https://your-project.vercel.app/
+
+# Get movies
+curl https://your-project.vercel.app/movies
+
+# Get genres
+curl https://your-project.vercel.app/genres
 ```
 
 ## 📝 Example Usage
