@@ -60,3 +60,5 @@ volumes:
 networks:
   movies_network:
     driver: bridge
+  dokploy_network:
+    external: true
