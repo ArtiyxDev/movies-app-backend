@@ -25,14 +25,14 @@ class Movie
   extends Model<MovieAttributes, MovieCreationAttributes>
   implements MovieAttributes
 {
-  public id!: number;
-  public name!: string;
-  public image!: string;
-  public synopsis!: string;
-  public release_year!: number;
+  declare id: number;
+  declare name: string;
+  declare image: string;
+  declare synopsis: string;
+  declare release_year: number;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  declare readonly createdAt: Date;
+  declare readonly updatedAt: Date;
 }
 
 Movie.init(

@@ -79,6 +79,44 @@ Para crear/actualizar las tablas de la base de datos:
 pnpm db:sync
 ```
 
+## 🧪 Pruebas
+
+El proyecto incluye pruebas de integración completas para todos los endpoints de la API.
+
+### Ejecutar Pruebas
+
+```bash
+pnpm test
+```
+
+### Configuración de Pruebas
+
+- **Base de Datos de Prueba:** Utiliza una base de datos separada `movies_test_db`
+- **Framework de Pruebas:** Jest con soporte TypeScript vía @swc/jest
+- **Archivos de Prueba:** Ubicados en el directorio `test/`
+- **Cobertura:** Actualmente en 82.36% (modelos al 100%)
+
+### Suite de Pruebas
+
+- ✅ **Géneros:** 4 pruebas (GET, POST, PUT, DELETE)
+- ✅ **Actores:** 4 pruebas (GET, POST, PUT, DELETE)
+- ✅ **Directores:** 4 pruebas (GET, POST, PUT, DELETE)
+- ✅ **Películas:** 7 pruebas (CRUD + asociaciones con géneros/actores/directores)
+
+**Total:** 19 pruebas exitosas
+
+### Variables de Entorno para Pruebas
+
+Agrega a tu archivo `.env`:
+
+```env
+TEST_DB_NAME=movies_test_db
+TEST_DB_USER=postgres
+TEST_DB_PASSWORD=postgres
+TEST_DB_HOST=localhost
+TEST_DB_PORT=5432
+```
+
 ## 📚 Documentación de la API
 
 URL Base: `http://localhost:3000`
@@ -388,8 +426,15 @@ movies-app-backend/
 │   │   └── syncDatabase.ts      # Script de sincronización de BD
 │   ├── app.ts                   # Configuración de la app Express
 │   └── index.ts                 # Punto de entrada del servidor
+├── test/
+│   ├── actors.test.ts           # Pruebas de endpoints de actores
+│   ├── directors.test.ts        # Pruebas de endpoints de directores
+│   ├── genres.test.ts           # Pruebas de endpoints de géneros
+│   ├── movies.test.ts           # Pruebas de endpoints de películas
+│   └── testSetup.ts             # Configuración de pruebas
 ├── .env.example                 # Plantilla de variables de entorno
 ├── .gitignore                   # Reglas de Git ignore
+├── jest.config.ts               # Configuración de Jest
 ├── package.json                 # Dependencias
 ├── tsconfig.json                # Configuración de TypeScript
 └── README.md                    # Este archivo

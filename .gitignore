@@ -5,6 +5,9 @@ pnpm-lock.yaml
 # Build output
 dist/
 
+# Test coverage
+coverage/
+
 # Environment variables
 .env
 

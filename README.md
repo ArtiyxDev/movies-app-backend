@@ -79,6 +79,44 @@ To create/update database tables:
 pnpm db:sync
 ```
 
+## 🧪 Testing
+
+The project includes comprehensive integration tests for all API endpoints.
+
+### Run Tests
+
+```bash
+pnpm test
+```
+
+### Test Configuration
+
+- **Test Database:** Uses a separate `movies_test_db` database
+- **Test Framework:** Jest with TypeScript support via @swc/jest
+- **Test Files:** Located in `test/` directory
+- **Coverage:** Currently at 82.36% (models at 100%)
+
+### Test Suite
+
+- ✅ **Genres:** 4 tests (GET, POST, PUT, DELETE)
+- ✅ **Actors:** 4 tests (GET, POST, PUT, DELETE)
+- ✅ **Directors:** 4 tests (GET, POST, PUT, DELETE)
+- ✅ **Movies:** 7 tests (CRUD + associations with genres/actors/directors)
+
+**Total:** 19 passing tests
+
+### Environment Variables for Testing
+
+Add to your `.env` file:
+
+```env
+TEST_DB_NAME=movies_test_db
+TEST_DB_USER=postgres
+TEST_DB_PASSWORD=postgres
+TEST_DB_HOST=localhost
+TEST_DB_PORT=5432
+```
+
 ## 📚 API Documentation
 
 Base URL: `http://localhost:3000`
@@ -388,8 +426,15 @@ movies-app-backend/
 │   │   └── syncDatabase.ts      # Database sync script
 │   ├── app.ts                   # Express app setup
 │   └── index.ts                 # Server entry point
+├── test/
+│   ├── actors.test.ts           # Actor endpoint tests
+│   ├── directors.test.ts        # Director endpoint tests
+│   ├── genres.test.ts           # Genre endpoint tests
+│   ├── movies.test.ts           # Movie endpoint tests
+│   └── testSetup.ts             # Test configuration
 ├── .env.example                 # Environment template
 ├── .gitignore                   # Git ignore rules
+├── jest.config.ts               # Jest configuration
 ├── package.json                 # Dependencies
 ├── tsconfig.json                # TypeScript config
 └── README.md                    # This file

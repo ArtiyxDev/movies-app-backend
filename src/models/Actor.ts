@@ -26,15 +26,15 @@ class Actor
   extends Model<ActorAttributes, ActorCreationAttributes>
   implements ActorAttributes
 {
-  public id!: number;
-  public first_name!: string;
-  public last_name!: string;
-  public nationality!: string;
-  public image!: string;
-  public birthday!: Date;
+  declare id: number;
+  declare first_name: string;
+  declare last_name: string;
+  declare nationality: string;
+  declare image: string;
+  declare birthday: Date;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  declare readonly createdAt: Date;
+  declare readonly updatedAt: Date;
 }
 
 Actor.init(
